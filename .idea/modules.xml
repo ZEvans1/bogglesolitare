@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/BoggleSolitare.iml" filepath="$PROJECT_DIR$/BoggleSolitare.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android_bogglesolitare.iml" filepath="$PROJECT_DIR$/android_bogglesolitare.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

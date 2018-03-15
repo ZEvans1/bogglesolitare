@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Random;
 
 import butterknife.ButterKnife;
@@ -13,7 +15,7 @@ import butterknife.BindView;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    @BindView(R.id.buttonCreateBoggleArray) Button mButtonCreateBoggleArray;
+    @BindView(R.id.buttonGoToGame) Button mButtonGoToGame;
 
     private String[] letters = new String[] {"B", "C", "D", "F", "G", "H", "J", "K", "L", "M", "N", "P", "Q", "R", "S", "T", "V", "W", "X", "Y", "Z"};
     private String[] vowels = new String[] {"A", "E", "I", "O", "U"};
@@ -22,23 +24,34 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         ButterKnife.bind(this);
-        mButtonCreateBoggleArray.setOnClickListener(this);
+        mButtonGoToGame.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-        if(v == mButtonCreateBoggleArray) {
-            int randLetter = new Random().nextInt(letters.length);
-            int randVowel = new Random().nextInt(vowels.length);
+        if(v == mButtonGoToGame) {
+            ArrayList<String> letterArrayList = new ArrayList<String>();
+            Random rand = new Random();
 
-            String[] boggleArray = {letters[randLetter], letters[randLetter], vowels[randVowel], letters[randLetter], letters[randLetter], vowels[randVowel], letters[randLetter], letters[randLetter]};
+            for (int i = 0; i < 6; i++) {
+                int randLetter = rand.nextInt(letters.length);
+                letterArrayList.add(letters[randLetter]);
+            }
+
+            for (int i = 6; i < 8; i++) {
+                int randVowel = rand.nextInt(vowels.length);
+                letterArrayList.add(vowels[randVowel]);
+            }
+
 
             Intent intent = new Intent(MainActivity.this, BoggleActivity.class);
-            intent.putExtra("boogleArray", boggleArray);
+            intent.putStringArrayListExtra("letterArrayList", letterArrayList);
 
             startActivity(intent);
 
+        } else {
 
         }
     }
